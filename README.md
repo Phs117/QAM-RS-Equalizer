@@ -1,29 +1,34 @@
-# 16-QAM System BER Simulation
+# 16-QAM System with ZF Equalization and Reed-Solomon Coding
 
-A Python-based simulation of a 16-QAM digital communication system over an AWGN channel to analyze Bit Error Rate (BER) performance.
+A comprehensive Python simulation of a digital communication system. This project analyzes Bit Error Rate (BER) performance over a distorted channel using equalization and forward error correction (FEC).
 
 ## Features
-* 16-QAM symbol mapping and demapping.
-* AWGN channel noise insertion.
-* BER calculation and comparison with theoretical values.
-* Performance visualization ($E_b/N_0$ vs. BER).
+* **Modulation:** 16-QAM mapping and demodulation.
+* **Pulse Shaping:** Square Root Raised Cosine (SRRC) filtering for transmission and reception.
+* **Channel:** Distorted channel simulation with AWGN (Additive White Gaussian Noise).
+* **Equalization:** Zero-Forcing (ZF) FIR Equalizer with delay optimization to mitigate Inter-Symbol Interference (ISI).
+* **Error Correction:** Reed-Solomon (RS) coding using the `galois` library for robust data recovery.
+* **Visualization:** Plots for Channel Frequency Response (CFR), Constellations, and BER vs. $E_b/N_0$ curves.
 
 ## Requirements
 * Python 3
-* NumPy
+* NumPy / SciPy
 * Matplotlib
+* Pillow (PIL)
+* tqdm
+* galois
 
 ## Installation and Usage
 1. Clone the repository:
-   `git clone https://github.com/Phs117/<img width="2095" height="1609" alt="ber" src="https://github.com/user-attachments/assets/db710b7a-2d0a-4eff-8711-bdcf5382c5b2" />
-16-QAM-system-BER.git`
+   `git clone https://github.com/Phs117/16-QAM-system-BER.git`
 2. Install dependencies:
-   `pip install numpy matplotlib`
-3. Run the simulation:
+   `pip install numpy scipy matplotlib pillow tqdm galois`
+3. Ensure an image named `image.tif` is in the directory (for image transmission functions).
+4. Run the simulation:
    `python main.py`
 
 ## Results
-The script generates a plot comparing the simulated BER against the theoretical 16-QAM curve, validating the system's performance across different signal-to-noise ratios.
+The script calculates the simulated BER by comparing transmitted and received bit blocks, accounting for the gains provided by the Reed-Solomon decoder and the effectiveness of the Zero-Forcing equalizer against channel distortion.
 
  <img width="2095" height="1609" alt="ber" src="https://github.com/user-attachments/assets/f130045b-b778-466e-b806-ad825a2b6289" />
 
